@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | Express Heating & Plumbing</title>
+  
+    <meta name="description" content="Reliable heating and plumbing services in Dundee. Call us today!" />
+  
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+  <header id="header">
+    <nav class="fixed top-0 z-50 w-full px-[2%] mx-auto flex flex-col lg:flex-row lg:items-center justify-between bg-white text-black text-[16pt] drop-shadow-md"
+        id="nav-bar">
+        <div id="button-container" class="flex flex-row justify-between">
+            <a href="/" class="nav-item flex items-center space-x-2 my-2">
+                <img class="h-auto w-16 sm:w-auto" src="/images/ehp-logo.png" alt="" />
+                <h1 class="nav-item font-bold text-[12pt] sm:text-[16pt]">EXPRESS HEATING & PLUMBING</h1>
+            </a>
+            <button class="nav-item lg:hidden self-center p-2" onclick="ToggleClasses('nav-list', 'hidden')">
+                <img src="/images/hamburger-menu-icon.svg" alt="" />
+            </button>
+        </div>
+        <ul class="py-5 lg:h-auto flex-col lg:flex-row items-center gap-[1.5vw] lg:flex hidden nav-list">
+            <li class="flex flex-col items-center mb-1 lg:mb-0">
+                <a href="/" class="hover:underline">Home</a>
+            </li>
+            <li class="flex flex-col items-center mb-1 lg:mb-0">
+                <a href="/projects" class="hover:underline">Projects</a>
+            </li>
+            <li class="flex flex-col items-center mb-1 lg:mb-0">
+                <a href="/gallery" class="hover:underline">Gallery</a>
+            </li>
+            <li id="service-section" class="relative flex flex-col items-center lg:items-start"
+                ref={servicesDropdownRef}>
+                <button id="service-button" class="flex flex-row items-center relative hover:underline"
+                    onclick="ToggleClass('service-list', 'hidden'); ToggleClass('service-arrow', 'rotate-180')">
+                    Services
+                    <img id="service-arrow" class="h-full w-auto sm:w-auto absolute lg:static left-full"
+                        src="/images/dropdown-arrow.svg" alt="" />
+                </button>
+                <ul class="lg:absolute lg:top-full flex-col items-center lg:items-start bg-white space-y-2 pt-2 lg:px-3 lg:-ml-3 hidden"
+                    id="service-list">
+                    <li class="flex flex-col items-center lg:list-item">
+                        <a href="/heating" class="hover:underline">Heating</a>
+                    </li>
+                    <li class="flex flex-col items-center lg:list-item">
+                        <a href="/plumbing" class="hover:underline">Plumbing</a>
+                    </li>
+                    <li class="flex flex-col items-center lg:list-item">
+                        <a href="/mechanical" class="hover:underline">Mechanical</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="flex flex-col items-center mb-1 lg:mb-0">
+                <a href="/about" class="hover:underline">About Us</a>
+            </li>
+            <li class="flex flex-col items-center mb-1 lg:mb-0">
+                <a href="/contact" class="contact-btn px-4 py-1">Contact</a>
+            </li>
+        </ul>
+    </nav>
+    <span class="fixed h-screen w-screen bg-black opacity-50 z-40 hidden lg:hidden nav-list"></span>
+</header>
+
+<script>
+    function setHeaderMargin() {
+        const header = document.querySelector('header');
+        const buttonContainer = document.getElementById("button-container");
+
+        if (!header || !buttonContainer) return;
+
+        const navHeight = buttonContainer.offsetHeight;
+        header.style.marginBottom = navHeight + "px";
+    }
+
+    window.addEventListener("DOMContentLoaded", setHeaderMargin);
+    window.addEventListener("load", setHeaderMargin);
+    window.addEventListener("resize", setHeaderMargin);
+
+    const serviceSection = document.getElementById("service-section");
+    const servicesList = document.getElementById("service-list");
+    const serviceArrow = document.getElementById("service-arrow");
+
+    function ToggleClass(id, CSSClass) {
+        const element = document.getElementById(id);
+        if (!element) return;
+
+        element.classList.toggle(CSSClass);
+    }
+
+    function ToggleClasses(className, toggleClass) {
+        const elements = document.querySelectorAll(`.${className}`);
+        if (!elements.length) return;
+
+        elements.forEach(el => el.classList.toggle(toggleClass));
+    }
+
+    function AddClasses(className, toggleClass) {
+        const elements = document.querySelectorAll(`.${className}`);
+        if (!elements.length) return;
+
+        elements.forEach(el => el.classList.add(toggleClass));
+    }
+
+    document.addEventListener("click", function (event) {
+        const target = event.target;
+
+        if (!target.closest("#service-button") && !target.closest("#service-list")) {
+            servicesList.classList.add("hidden");
+            serviceArrow.classList.remove("rotate-180");
+        }
+        if (!target.closest("#nav-bar")) {
+            AddClasses('nav-list', 'hidden')
+        }
+    });
+
+    serviceSection.addEventListener('mouseleave', () => {
+        if (window.innerWidth >= 1024) {
+            servicesList.classList.add("hidden");
+            serviceArrow.classList.remove("rotate-180");
+        }
+    });
+
+    serviceSection.addEventListener('mouseenter', () => {
+        if (window.innerWidth >= 1024) {
+            servicesList.classList.remove("hidden");
+            serviceArrow.classList.add("rotate-180")
+        }
+    })
+</script>
+
+  <main>
+    
+
+
+
+
+
+
+  
+  
+    
+      
+    
+  
+
+  
+  
+    
+      
+    
+  
+
+  
+  
+    
+      
+    
+  
+
+  
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+  
+
+
+<div class="w-full h-[60vh] md:h-[70vh] flex items-center relative overflow-hidden">
+      <img
+        src="/projects/brown-street/brown-street.jpg"
+        alt="Projects"
+        class="w-full h-full absolute object-cover transition-opacity duration-1000 ease-in-out opacity-0 z-0"
+        onload="this.classList.add('opacity-100')"
+        data-slideshow-image
+      />
+      <img
+        src="/projects/farquhar-court/farquhar-court.jpg"
+        alt="Projects"
+        class="w-full h-full absolute object-cover transition-opacity duration-1000 ease-in-out opacity-0 z-0"
+        
+        data-slideshow-image
+      />
+      <img
+        src="/projects/st-columbas/st-columbas.jpg"
+        alt="Projects"
+        class="w-full h-full absolute object-cover transition-opacity duration-1000 ease-in-out opacity-0 z-0"
+        
+        data-slideshow-image
+      />
+      <img
+        src="/projects/gilson-gray-llp/gilson-gray-llp.jpeg"
+        alt="Projects"
+        class="w-full h-full absolute object-cover transition-opacity duration-1000 ease-in-out opacity-0 z-0"
+        
+        data-slideshow-image
+      />
+    <script>
+      
+      let slideIndex = 0;
+      const slides = document.querySelectorAll('[data-slideshow-image]');
+      if (slides.length > 1) {
+        setInterval(() => {
+          slides[slideIndex].classList.remove('opacity-100');
+          slides[slideIndex].classList.add('opacity-0');
+          slideIndex = (slideIndex + 1) % slides.length;
+          slides[slideIndex].classList.remove('opacity-0');
+          slides[slideIndex].classList.add('opacity-100');
+        }, 4000); 
+      }
+    </script>
+  
+
+  <h1 class="absolute z-10 bg-black/70 p-3 md:p-6 text-white text-[20pt] md:text-[32pt] w-full md:max-w-[320px] bottom-0 md:bottom-auto">
+    Our Projects
+  </h1>
+</div>
+
+
+<div class="container-spacing flex flex-col">
+
+  
+    
+    
+    <div>
+      <h2 class="text-[18pt] md:text-[24pt] capitalize">Listed Buildings</h2>
+      <div class="flex flex-col lg:flex-wrap justify-between lg:flex-row gap-3 md:gap-6 lg:gap-9">
+        
+          <a href="/projects/brown-street/" class="w-full lg:w-[48%] h-24 border-blue-200 border-2 hover:border-blue-400 flex flex-row">
+    <img src="/projects/brown-street/brown-street.jpg" alt="" class="bg-gray-500 h-full aspect-square">
+    <div class="overflow-hidden px-1">
+        <h3 class="font-bold">Brown Street</h3>
+        <p>This project was focused upon the restoration and refurbishment of a 19th century Jute Mill into 17 new flats. The building is an ‘A’ grade listed building so it was essential that we maintained the aesthetic in order to comply with the buildings regulations and ensured that the listed building status was not tarnished. </p>
+    </div>
+</a>
+        
+      </div>
+    </div>
+    
+  
+    
+    
+    <div>
+      <h2 class="text-[18pt] md:text-[24pt] capitalize">Residential</h2>
+      <div class="flex flex-col lg:flex-wrap justify-between lg:flex-row gap-3 md:gap-6 lg:gap-9">
+        
+          <a href="/projects/farquhar-court/" class="w-full lg:w-[48%] h-24 border-blue-200 border-2 hover:border-blue-400 flex flex-row">
+    <img src="/projects/farquhar-court/farquhar-court.jpg" alt="" class="bg-gray-500 h-full aspect-square">
+    <div class="overflow-hidden px-1">
+        <h3 class="font-bold">Farquhar Court</h3>
+        <p>Express Heating and Plumbing was responsible for the installation of all plumbing and heating services inclusive of design, boiler installation, central heating, bathrooms and kitchens, for all 14 of the new build homes within Farquhar Court. </p>
+    </div>
+</a>
+        
+      </div>
+    </div>
+    
+  
+    
+    
+    <div>
+      <h2 class="text-[18pt] md:text-[24pt] capitalize">Care Homes</h2>
+      <div class="flex flex-col lg:flex-wrap justify-between lg:flex-row gap-3 md:gap-6 lg:gap-9">
+        
+          <a href="/projects/st-columbas/" class="w-full lg:w-[48%] h-24 border-blue-200 border-2 hover:border-blue-400 flex flex-row">
+    <img src="/projects/st-columbas/st-columbas.jpg" alt="" class="bg-gray-500 h-full aspect-square">
+    <div class="overflow-hidden px-1">
+        <h3 class="font-bold">St. Columba&#39;s</h3>
+        <p>This home is newly refurbished and set in attractive gardens within close walking distance to the town centre of Dundee. Express Heating and Plumbing were responsible for fitting all of the en-suite bedrooms with the appropriate facilities alongside the wet rooms and bathrooms throughout the facility. We were also responsible for the supply and installation of plumbing equipment utilised in the hair salon and kitchens inside the care home. </p>
+    </div>
+</a>
+        
+      </div>
+    </div>
+    
+  
+    
+    
+    <div>
+      <h2 class="text-[18pt] md:text-[24pt] capitalize">Commercial</h2>
+      <div class="flex flex-col lg:flex-wrap justify-between lg:flex-row gap-3 md:gap-6 lg:gap-9">
+        
+          <a href="/projects/gilson-gray-llp/" class="w-full lg:w-[48%] h-24 border-blue-200 border-2 hover:border-blue-400 flex flex-row">
+    <img src="/projects/gilson-gray-llp/gilson-gray-llp.jpeg" alt="" class="bg-gray-500 h-full aspect-square">
+    <div class="overflow-hidden px-1">
+        <h3 class="font-bold">Gilson Gray</h3>
+        <p></p>
+    </div>
+</a>
+        
+      </div>
+    </div>
+    
+  
+    
+    
+  
+    
+    
+  
+
+</div>
+
+
+  </main>
+
+  <footer class="bg-gray-100 flex flex-col py-4">
+  <div class="flex flex-col md:flex-row justify-center px-3 py-4 space-y-4 md:space-y-0 md:space-x-8 lg:space-x-16">
+    <div class="flex flex-col">
+      <h3>
+        <u>Contact</u>
+      </h3>
+      <a href="mailto:enquiries@expressenergysolutions.co.uk"
+        class="hover:underline break-words whitespace-normal max-w-full">enquiries@expressenergysolutions.co.uk</a>
+      <a href="tel:+447727118954" class="hover:underline w-fit">+44 7727 118954</a>
+    </div>
+    <div class="flex flex-col">
+      <h3>
+        <u>Find Us</u>
+      </h3>
+      <address>
+        Unit 2A, Brown Street, Dundee <br />
+        DD1 5EJ
+      </address>
+    </div>
+    <div>
+      <h3>
+        <u>Links</u>
+      </h3>
+      <ul>
+        <li>
+          <a href="/" class="hover:underline">Home</a>
+        </li>
+        <li>
+          <a href="/projects" class="hover:underline">Projects</a>
+        </li>
+        <li>
+        <li>
+          <a href="/gallery" class="hover:underline">Gallery</a>
+        <li>
+          <a href="/heating" class="hover:underline">Heating</a>
+        </li>
+        <li>
+          <a href="/plumbing" class="hover:underline">Plumbing</a>
+        </li>
+        <li>
+          <a href="/mechanical" class="hover:underline">Mechanical</a>
+        </li>
+        <li>
+          <a href="/about" class="hover:underline">About Us</a>
+        </li>
+        <li>
+          <a href="/contact" class="hover:underline">Contact</a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <img src=/images/gas-safe.png alt="Gas Safe logo" class="max-h-[160px] w-auto" loading="lazy" />
+    </div>
+  </div>
+  <div class="text-center text-sm px-3">
+    <p>© 2025 Express Heating & Plumbing Ltd. All rights reserved.</p>
+    <p>Registered in Scotland | Company No: 447633 | VAT No: 159 5094 79</p>
+  </div>
+</footer>
+</body>
+</html>

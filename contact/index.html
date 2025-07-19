@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Express Heating & Plumbing</title>
+  
+    <meta name="description" content="Reliable heating and plumbing services in Dundee. Call us today!" />
+  
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+  <header id="header">
+    <nav class="fixed top-0 z-50 w-full px-[2%] mx-auto flex flex-col lg:flex-row lg:items-center justify-between bg-white text-black text-[16pt] drop-shadow-md"
+        id="nav-bar">
+        <div id="button-container" class="flex flex-row justify-between">
+            <a href="/" class="nav-item flex items-center space-x-2 my-2">
+                <img class="h-auto w-16 sm:w-auto" src="/images/ehp-logo.png" alt="" />
+                <h1 class="nav-item font-bold text-[12pt] sm:text-[16pt]">EXPRESS HEATING & PLUMBING</h1>
+            </a>
+            <button class="nav-item lg:hidden self-center p-2" onclick="ToggleClasses('nav-list', 'hidden')">
+                <img src="/images/hamburger-menu-icon.svg" alt="" />
+            </button>
+        </div>
+        <ul class="py-5 lg:h-auto flex-col lg:flex-row items-center gap-[1.5vw] lg:flex hidden nav-list">
+            <li class="flex flex-col items-center mb-1 lg:mb-0">
+                <a href="/" class="hover:underline">Home</a>
+            </li>
+            <li class="flex flex-col items-center mb-1 lg:mb-0">
+                <a href="/projects" class="hover:underline">Projects</a>
+            </li>
+            <li class="flex flex-col items-center mb-1 lg:mb-0">
+                <a href="/gallery" class="hover:underline">Gallery</a>
+            </li>
+            <li id="service-section" class="relative flex flex-col items-center lg:items-start"
+                ref={servicesDropdownRef}>
+                <button id="service-button" class="flex flex-row items-center relative hover:underline"
+                    onclick="ToggleClass('service-list', 'hidden'); ToggleClass('service-arrow', 'rotate-180')">
+                    Services
+                    <img id="service-arrow" class="h-full w-auto sm:w-auto absolute lg:static left-full"
+                        src="/images/dropdown-arrow.svg" alt="" />
+                </button>
+                <ul class="lg:absolute lg:top-full flex-col items-center lg:items-start bg-white space-y-2 pt-2 lg:px-3 lg:-ml-3 hidden"
+                    id="service-list">
+                    <li class="flex flex-col items-center lg:list-item">
+                        <a href="/heating" class="hover:underline">Heating</a>
+                    </li>
+                    <li class="flex flex-col items-center lg:list-item">
+                        <a href="/plumbing" class="hover:underline">Plumbing</a>
+                    </li>
+                    <li class="flex flex-col items-center lg:list-item">
+                        <a href="/mechanical" class="hover:underline">Mechanical</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="flex flex-col items-center mb-1 lg:mb-0">
+                <a href="/about" class="hover:underline">About Us</a>
+            </li>
+            <li class="flex flex-col items-center mb-1 lg:mb-0">
+                <a href="/contact" class="contact-btn px-4 py-1">Contact</a>
+            </li>
+        </ul>
+    </nav>
+    <span class="fixed h-screen w-screen bg-black opacity-50 z-40 hidden lg:hidden nav-list"></span>
+</header>
+
+<script>
+    function setHeaderMargin() {
+        const header = document.querySelector('header');
+        const buttonContainer = document.getElementById("button-container");
+
+        if (!header || !buttonContainer) return;
+
+        const navHeight = buttonContainer.offsetHeight;
+        header.style.marginBottom = navHeight + "px";
+    }
+
+    window.addEventListener("DOMContentLoaded", setHeaderMargin);
+    window.addEventListener("load", setHeaderMargin);
+    window.addEventListener("resize", setHeaderMargin);
+
+    const serviceSection = document.getElementById("service-section");
+    const servicesList = document.getElementById("service-list");
+    const serviceArrow = document.getElementById("service-arrow");
+
+    function ToggleClass(id, CSSClass) {
+        const element = document.getElementById(id);
+        if (!element) return;
+
+        element.classList.toggle(CSSClass);
+    }
+
+    function ToggleClasses(className, toggleClass) {
+        const elements = document.querySelectorAll(`.${className}`);
+        if (!elements.length) return;
+
+        elements.forEach(el => el.classList.toggle(toggleClass));
+    }
+
+    function AddClasses(className, toggleClass) {
+        const elements = document.querySelectorAll(`.${className}`);
+        if (!elements.length) return;
+
+        elements.forEach(el => el.classList.add(toggleClass));
+    }
+
+    document.addEventListener("click", function (event) {
+        const target = event.target;
+
+        if (!target.closest("#service-button") && !target.closest("#service-list")) {
+            servicesList.classList.add("hidden");
+            serviceArrow.classList.remove("rotate-180");
+        }
+        if (!target.closest("#nav-bar")) {
+            AddClasses('nav-list', 'hidden')
+        }
+    });
+
+    serviceSection.addEventListener('mouseleave', () => {
+        if (window.innerWidth >= 1024) {
+            servicesList.classList.add("hidden");
+            serviceArrow.classList.remove("rotate-180");
+        }
+    });
+
+    serviceSection.addEventListener('mouseenter', () => {
+        if (window.innerWidth >= 1024) {
+            servicesList.classList.remove("hidden");
+            serviceArrow.classList.add("rotate-180")
+        }
+    })
+</script>
+
+  <main>
+    
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<div class="container-spacing flex flex-col sm:flex-row justify-evenly">
+    <div class="flex-1">
+        <h2 class="text-[18pt] md:text-[24pt]">
+            Get a Free Quote
+        </h2>
+        <p class="text-lg">
+            You can contact us directly via email or phone, or fill in the form below. Describe the job and we will be
+            in touch to give you a <b>free
+                quote</b>.
+        </p>
+
+        <div class='flex flex-row items-center'>
+            <img src=/images/mail-icon.svg alt="Mail icon" class='w-12 py-2' loading="lazy" />
+            <u><a href="mailto:enquiries@expressenergysolutions.co.uk"
+                    class='px-2'>enquiries@expressenergysolutions.co.uk</a></u>
+        </div>
+        <div class='flex flex-row items-center'>
+            <img src="/images/phone-icon.svg" alt="Phone icon" class='w-12 py-2' loading="lazy" />
+            <u><a href="tel:+447727118954" class='px-2'>+44 7727 118954</a></u>
+        </div>
+
+        <form action="https://formspree.io/f/mrblgyya" method="post" class="bg-white flex flex-col pt-4">
+            <label for="name">* Full Name:</label>
+            <input required type="text" id="name" name="name" class="form-input sm:max-w-[240px]"
+                placeholder="John Smith">
+
+            <label for="email">* Email Address:</label>
+            <input required type="email" id="email" name="email" class="form-input sm:max-w-[240px]"
+                placeholder="johnsmith@example.com">
+
+            <label for="phone-number">* Phone Number:</label>
+            <input required type="tel" id="phone-number" name="phone-number" class="form-input sm:max-w-[240px]"
+                placeholder="07700 900000">
+
+            <label for="message">* Your Message:</label>
+            <textarea required id="message" name="message" rows="6" cols="40" placeholder="Type your message here..."
+                class="form-input w-full"></textarea>
+
+            <div class="flex flex-row items-center my-2">
+                <input type="checkbox" id="consent" name="consent" required class="mr-2 rounded-none">
+                <label for="consent" class="text-gray-700">
+                    I agree to the
+                    <a href="/privacy-policy" target="_blank" rel="noopener noreferrer"
+                        class="text-blue-600 underline hover:text-blue-800">
+                        Privacy Policy
+                    </a>
+                </label>
+            </div>
+            <div class="g-recaptcha" data-sitekey="6LfOTYYrAAAAANRus_3TLqVmcMkrWSVPB9cZLtU0"></div>
+            <input type="text" name="_gotcha" style="display:none">
+            <input type="submit" value="Submit" class="sm:max-w-[120px] inline-contact-btn cursor-pointer">
+        </form>
+
+        <script>
+            document.querySelector('form').addEventListener('submit', function (e) {
+                const response = grecaptcha.getResponse();
+                if (!response) {
+                    e.preventDefault(); 
+                    alert('Please complete the CAPTCHA.');
+                }
+            });
+        </script>
+
+    </div>
+    <div class="flex-1 flex flex-col align-middle items-center">
+        <iframe title="Google Map"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d137.77189965132075!2d-2.979182782936725!3d56.461724371169716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1742243982725!5m2!1sen!2suk"
+            class='w-full aspect-square sm:aspect-auto sm:h-full' allowFullScreen loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade">
+        </iframe>
+        <address class="">
+            Unit 2A, Brown Street, Dundee, DD1 5EJ
+        </address>
+    </div>
+</div>
+
+
+  </main>
+
+  <footer class="bg-gray-100 flex flex-col py-4">
+  <div class="flex flex-col md:flex-row justify-center px-3 py-4 space-y-4 md:space-y-0 md:space-x-8 lg:space-x-16">
+    <div class="flex flex-col">
+      <h3>
+        <u>Contact</u>
+      </h3>
+      <a href="mailto:enquiries@expressenergysolutions.co.uk"
+        class="hover:underline break-words whitespace-normal max-w-full">enquiries@expressenergysolutions.co.uk</a>
+      <a href="tel:+447727118954" class="hover:underline w-fit">+44 7727 118954</a>
+    </div>
+    <div class="flex flex-col">
+      <h3>
+        <u>Find Us</u>
+      </h3>
+      <address>
+        Unit 2A, Brown Street, Dundee <br />
+        DD1 5EJ
+      </address>
+    </div>
+    <div>
+      <h3>
+        <u>Links</u>
+      </h3>
+      <ul>
+        <li>
+          <a href="/" class="hover:underline">Home</a>
+        </li>
+        <li>
+          <a href="/projects" class="hover:underline">Projects</a>
+        </li>
+        <li>
+        <li>
+          <a href="/gallery" class="hover:underline">Gallery</a>
+        <li>
+          <a href="/heating" class="hover:underline">Heating</a>
+        </li>
+        <li>
+          <a href="/plumbing" class="hover:underline">Plumbing</a>
+        </li>
+        <li>
+          <a href="/mechanical" class="hover:underline">Mechanical</a>
+        </li>
+        <li>
+          <a href="/about" class="hover:underline">About Us</a>
+        </li>
+        <li>
+          <a href="/contact" class="hover:underline">Contact</a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <img src=/images/gas-safe.png alt="Gas Safe logo" class="max-h-[160px] w-auto" loading="lazy" />
+    </div>
+  </div>
+  <div class="text-center text-sm px-3">
+    <p>© 2025 Express Heating & Plumbing Ltd. All rights reserved.</p>
+    <p>Registered in Scotland | Company No: 447633 | VAT No: 159 5094 79</p>
+  </div>
+</footer>
+</body>
+</html>

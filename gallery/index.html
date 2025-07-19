@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery | Express Heating & Plumbing</title>
+  
+    <meta name="description" content="Reliable heating and plumbing services in Dundee. Call us today!" />
+  
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+  <header id="header">
+    <nav class="fixed top-0 z-50 w-full px-[2%] mx-auto flex flex-col lg:flex-row lg:items-center justify-between bg-white text-black text-[16pt] drop-shadow-md"
+        id="nav-bar">
+        <div id="button-container" class="flex flex-row justify-between">
+            <a href="/" class="nav-item flex items-center space-x-2 my-2">
+                <img class="h-auto w-16 sm:w-auto" src="/images/ehp-logo.png" alt="" />
+                <h1 class="nav-item font-bold text-[12pt] sm:text-[16pt]">EXPRESS HEATING & PLUMBING</h1>
+            </a>
+            <button class="nav-item lg:hidden self-center p-2" onclick="ToggleClasses('nav-list', 'hidden')">
+                <img src="/images/hamburger-menu-icon.svg" alt="" />
+            </button>
+        </div>
+        <ul class="py-5 lg:h-auto flex-col lg:flex-row items-center gap-[1.5vw] lg:flex hidden nav-list">
+            <li class="flex flex-col items-center mb-1 lg:mb-0">
+                <a href="/" class="hover:underline">Home</a>
+            </li>
+            <li class="flex flex-col items-center mb-1 lg:mb-0">
+                <a href="/projects" class="hover:underline">Projects</a>
+            </li>
+            <li class="flex flex-col items-center mb-1 lg:mb-0">
+                <a href="/gallery" class="hover:underline">Gallery</a>
+            </li>
+            <li id="service-section" class="relative flex flex-col items-center lg:items-start"
+                ref={servicesDropdownRef}>
+                <button id="service-button" class="flex flex-row items-center relative hover:underline"
+                    onclick="ToggleClass('service-list', 'hidden'); ToggleClass('service-arrow', 'rotate-180')">
+                    Services
+                    <img id="service-arrow" class="h-full w-auto sm:w-auto absolute lg:static left-full"
+                        src="/images/dropdown-arrow.svg" alt="" />
+                </button>
+                <ul class="lg:absolute lg:top-full flex-col items-center lg:items-start bg-white space-y-2 pt-2 lg:px-3 lg:-ml-3 hidden"
+                    id="service-list">
+                    <li class="flex flex-col items-center lg:list-item">
+                        <a href="/heating" class="hover:underline">Heating</a>
+                    </li>
+                    <li class="flex flex-col items-center lg:list-item">
+                        <a href="/plumbing" class="hover:underline">Plumbing</a>
+                    </li>
+                    <li class="flex flex-col items-center lg:list-item">
+                        <a href="/mechanical" class="hover:underline">Mechanical</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="flex flex-col items-center mb-1 lg:mb-0">
+                <a href="/about" class="hover:underline">About Us</a>
+            </li>
+            <li class="flex flex-col items-center mb-1 lg:mb-0">
+                <a href="/contact" class="contact-btn px-4 py-1">Contact</a>
+            </li>
+        </ul>
+    </nav>
+    <span class="fixed h-screen w-screen bg-black opacity-50 z-40 hidden lg:hidden nav-list"></span>
+</header>
+
+<script>
+    function setHeaderMargin() {
+        const header = document.querySelector('header');
+        const buttonContainer = document.getElementById("button-container");
+
+        if (!header || !buttonContainer) return;
+
+        const navHeight = buttonContainer.offsetHeight;
+        header.style.marginBottom = navHeight + "px";
+    }
+
+    window.addEventListener("DOMContentLoaded", setHeaderMargin);
+    window.addEventListener("load", setHeaderMargin);
+    window.addEventListener("resize", setHeaderMargin);
+
+    const serviceSection = document.getElementById("service-section");
+    const servicesList = document.getElementById("service-list");
+    const serviceArrow = document.getElementById("service-arrow");
+
+    function ToggleClass(id, CSSClass) {
+        const element = document.getElementById(id);
+        if (!element) return;
+
+        element.classList.toggle(CSSClass);
+    }
+
+    function ToggleClasses(className, toggleClass) {
+        const elements = document.querySelectorAll(`.${className}`);
+        if (!elements.length) return;
+
+        elements.forEach(el => el.classList.toggle(toggleClass));
+    }
+
+    function AddClasses(className, toggleClass) {
+        const elements = document.querySelectorAll(`.${className}`);
+        if (!elements.length) return;
+
+        elements.forEach(el => el.classList.add(toggleClass));
+    }
+
+    document.addEventListener("click", function (event) {
+        const target = event.target;
+
+        if (!target.closest("#service-button") && !target.closest("#service-list")) {
+            servicesList.classList.add("hidden");
+            serviceArrow.classList.remove("rotate-180");
+        }
+        if (!target.closest("#nav-bar")) {
+            AddClasses('nav-list', 'hidden')
+        }
+    });
+
+    serviceSection.addEventListener('mouseleave', () => {
+        if (window.innerWidth >= 1024) {
+            servicesList.classList.add("hidden");
+            serviceArrow.classList.remove("rotate-180");
+        }
+    });
+
+    serviceSection.addEventListener('mouseenter', () => {
+        if (window.innerWidth >= 1024) {
+            servicesList.classList.remove("hidden");
+            serviceArrow.classList.add("rotate-180")
+        }
+    })
+</script>
+
+  <main>
+    
+<div class="container-spacing flex flex-col lg:flex-row lg:flex-wrap lg:justify-evenly">
+
+  
+  
+    
+    
+
+    
+      <div class="relative m-2">
+  <img src="/projects/brown-street/images/brown-street-bathroom.jpg" alt="images/brown-street-bathroom.jpg"
+    class="lg:max-h-[35vh] w-auto transition-opacity duration-1000 ease-in-out opacity-0"
+    loading="lazy"
+    onload="this.classList.add('opacity-100'); this.classList.remove('opacity-0'); this.nextElementSibling.classList.remove('hidden'); this.nextElementSibling.classList.add('flex');" />
+
+  <a href="https://expressenergysolutions.co.uk/projects/brown-street/"
+    class="hidden absolute bottom-0 left-0 right-0 h-[40px] bg-black bg-opacity-50 text-white items-center justify-center hover:underline text-[18pt] p-2">
+    View Project
+  </a>
+</div>
+    
+      <div class="relative m-2">
+  <img src="/projects/brown-street/images/brown-street-boiler.jpg" alt="images/brown-street-boiler.jpg"
+    class="lg:max-h-[35vh] w-auto transition-opacity duration-1000 ease-in-out opacity-0"
+    loading="lazy"
+    onload="this.classList.add('opacity-100'); this.classList.remove('opacity-0'); this.nextElementSibling.classList.remove('hidden'); this.nextElementSibling.classList.add('flex');" />
+
+  <a href="https://expressenergysolutions.co.uk/projects/brown-street/"
+    class="hidden absolute bottom-0 left-0 right-0 h-[40px] bg-black bg-opacity-50 text-white items-center justify-center hover:underline text-[18pt] p-2">
+    View Project
+  </a>
+</div>
+    
+      <div class="relative m-2">
+  <img src="/projects/brown-street/images/brown-street-outside-2.jpg" alt="images/brown-street-outside-2.jpg"
+    class="lg:max-h-[35vh] w-auto transition-opacity duration-1000 ease-in-out opacity-0"
+    loading="lazy"
+    onload="this.classList.add('opacity-100'); this.classList.remove('opacity-0'); this.nextElementSibling.classList.remove('hidden'); this.nextElementSibling.classList.add('flex');" />
+
+  <a href="https://expressenergysolutions.co.uk/projects/brown-street/"
+    class="hidden absolute bottom-0 left-0 right-0 h-[40px] bg-black bg-opacity-50 text-white items-center justify-center hover:underline text-[18pt] p-2">
+    View Project
+  </a>
+</div>
+    
+      <div class="relative m-2">
+  <img src="/projects/brown-street/images/brown-street-outside.jpg" alt="images/brown-street-outside.jpg"
+    class="lg:max-h-[35vh] w-auto transition-opacity duration-1000 ease-in-out opacity-0"
+    loading="lazy"
+    onload="this.classList.add('opacity-100'); this.classList.remove('opacity-0'); this.nextElementSibling.classList.remove('hidden'); this.nextElementSibling.classList.add('flex');" />
+
+  <a href="https://expressenergysolutions.co.uk/projects/brown-street/"
+    class="hidden absolute bottom-0 left-0 right-0 h-[40px] bg-black bg-opacity-50 text-white items-center justify-center hover:underline text-[18pt] p-2">
+    View Project
+  </a>
+</div>
+    
+      <div class="relative m-2">
+  <img src="/projects/brown-street/images/brown-street-plant-room-2.jpg" alt="images/brown-street-plant-room-2.jpg"
+    class="lg:max-h-[35vh] w-auto transition-opacity duration-1000 ease-in-out opacity-0"
+    loading="lazy"
+    onload="this.classList.add('opacity-100'); this.classList.remove('opacity-0'); this.nextElementSibling.classList.remove('hidden'); this.nextElementSibling.classList.add('flex');" />
+
+  <a href="https://expressenergysolutions.co.uk/projects/brown-street/"
+    class="hidden absolute bottom-0 left-0 right-0 h-[40px] bg-black bg-opacity-50 text-white items-center justify-center hover:underline text-[18pt] p-2">
+    View Project
+  </a>
+</div>
+    
+      <div class="relative m-2">
+  <img src="/projects/brown-street/images/brown-street-plant-room-3.jpg" alt="images/brown-street-plant-room-3.jpg"
+    class="lg:max-h-[35vh] w-auto transition-opacity duration-1000 ease-in-out opacity-0"
+    loading="lazy"
+    onload="this.classList.add('opacity-100'); this.classList.remove('opacity-0'); this.nextElementSibling.classList.remove('hidden'); this.nextElementSibling.classList.add('flex');" />
+
+  <a href="https://expressenergysolutions.co.uk/projects/brown-street/"
+    class="hidden absolute bottom-0 left-0 right-0 h-[40px] bg-black bg-opacity-50 text-white items-center justify-center hover:underline text-[18pt] p-2">
+    View Project
+  </a>
+</div>
+    
+      <div class="relative m-2">
+  <img src="/projects/brown-street/images/brown-street-plant-room.jpg" alt="images/brown-street-plant-room.jpg"
+    class="lg:max-h-[35vh] w-auto transition-opacity duration-1000 ease-in-out opacity-0"
+    loading="lazy"
+    onload="this.classList.add('opacity-100'); this.classList.remove('opacity-0'); this.nextElementSibling.classList.remove('hidden'); this.nextElementSibling.classList.add('flex');" />
+
+  <a href="https://expressenergysolutions.co.uk/projects/brown-street/"
+    class="hidden absolute bottom-0 left-0 right-0 h-[40px] bg-black bg-opacity-50 text-white items-center justify-center hover:underline text-[18pt] p-2">
+    View Project
+  </a>
+</div>
+    
+  
+    
+    
+
+    
+  
+    
+    
+
+    
+  
+    
+    
+
+    
+  
+
+  
+  
+  
+    
+      
+      <div class="relative m-2">
+        <img src="/images/gallery/gallery-1.jpg" alt="gallery-1.jpg"
+          class="lg:max-h-[35vh] w-auto transition-opacity duration-1000 ease-in-out opacity-0"
+          onload="this.classList.add('opacity-100'); this.classList.remove('opacity-0')" />
+      </div>
+    
+  
+    
+      
+      <div class="relative m-2">
+        <img src="/images/gallery/gallery-2.jpg" alt="gallery-2.jpg"
+          class="lg:max-h-[35vh] w-auto transition-opacity duration-1000 ease-in-out opacity-0"
+          onload="this.classList.add('opacity-100'); this.classList.remove('opacity-0')" />
+      </div>
+    
+  
+    
+      
+      <div class="relative m-2">
+        <img src="/images/gallery/gallery-3.jpg" alt="gallery-3.jpg"
+          class="lg:max-h-[35vh] w-auto transition-opacity duration-1000 ease-in-out opacity-0"
+          onload="this.classList.add('opacity-100'); this.classList.remove('opacity-0')" />
+      </div>
+    
+  
+
+</div>
+
+  </main>
+
+  <footer class="bg-gray-100 flex flex-col py-4">
+  <div class="flex flex-col md:flex-row justify-center px-3 py-4 space-y-4 md:space-y-0 md:space-x-8 lg:space-x-16">
+    <div class="flex flex-col">
+      <h3>
+        <u>Contact</u>
+      </h3>
+      <a href="mailto:enquiries@expressenergysolutions.co.uk"
+        class="hover:underline break-words whitespace-normal max-w-full">enquiries@expressenergysolutions.co.uk</a>
+      <a href="tel:+447727118954" class="hover:underline w-fit">+44 7727 118954</a>
+    </div>
+    <div class="flex flex-col">
+      <h3>
+        <u>Find Us</u>
+      </h3>
+      <address>
+        Unit 2A, Brown Street, Dundee <br />
+        DD1 5EJ
+      </address>
+    </div>
+    <div>
+      <h3>
+        <u>Links</u>
+      </h3>
+      <ul>
+        <li>
+          <a href="/" class="hover:underline">Home</a>
+        </li>
+        <li>
+          <a href="/projects" class="hover:underline">Projects</a>
+        </li>
+        <li>
+        <li>
+          <a href="/gallery" class="hover:underline">Gallery</a>
+        <li>
+          <a href="/heating" class="hover:underline">Heating</a>
+        </li>
+        <li>
+          <a href="/plumbing" class="hover:underline">Plumbing</a>
+        </li>
+        <li>
+          <a href="/mechanical" class="hover:underline">Mechanical</a>
+        </li>
+        <li>
+          <a href="/about" class="hover:underline">About Us</a>
+        </li>
+        <li>
+          <a href="/contact" class="hover:underline">Contact</a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <img src=/images/gas-safe.png alt="Gas Safe logo" class="max-h-[160px] w-auto" loading="lazy" />
+    </div>
+  </div>
+  <div class="text-center text-sm px-3">
+    <p>© 2025 Express Heating & Plumbing Ltd. All rights reserved.</p>
+    <p>Registered in Scotland | Company No: 447633 | VAT No: 159 5094 79</p>
+  </div>
+</footer>
+</body>
+</html>
